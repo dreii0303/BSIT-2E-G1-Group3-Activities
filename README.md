@@ -5,5 +5,5 @@ Group Members
 - Bernardino, Aliah Jane D.
 - Cariño, Jared Riley L.
 - Garcera, John Leo E.
-- Natividad, Jan Franz
+- Natividad, Jan Franz G.
 - Panganiban, Alyssa Jovel C.
