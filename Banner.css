@@ -34,18 +34,3 @@
     opacity: 0.9;
 }
 
-.banner-btn {
-    text-decoration: none;
-    background-color: white;
-    color: #1e90ff;
-    padding: 12px 32px;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.banner-btn:hover {
-    background-color: #e6f2ff;
-    transform: translateY(-2px);
-}
-
