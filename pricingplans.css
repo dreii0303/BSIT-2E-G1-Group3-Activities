@@ -72,7 +72,6 @@ body {
     background-color: #1a5fd0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .pricing-section {
         flex-direction: column;
