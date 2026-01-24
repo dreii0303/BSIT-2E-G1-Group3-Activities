@@ -60,14 +60,12 @@
     cursor: pointer;
   }
 
-  /* ERROR MESSAGE */
   .error {
     margin-top: 10px;
     color: red;
     font-weight: bold;
   }
 
-  /* GREEN OUTPUT BOX */
   .output {
     margin-top: 30px;
     padding: 20px;
@@ -118,7 +116,7 @@
 
       <div>
         <label>Civil Status</label>
-        <select id="status">
+        <select id="civilStatus">
           <option value="">Select Status</option>
           <option>Single</option>
           <option>Married</option>
@@ -146,8 +144,6 @@
     </div>
 
     <button type="submit">Submit Personal Data Sheet</button>
-
-    <!-- CUSTOM ERROR MESSAGE -->
     <div id="errorMsg" class="error"></div>
   </form>
 
@@ -166,14 +162,13 @@
 </div>
 
 <script>
-  // disable future dates
+  // Disable future dates
   dob.max = new Date().toISOString().split("T")[0];
 
   pdsForm.onsubmit = function(e) {
     e.preventDefault();
     errorMsg.textContent = "";
 
-    // PER-FIELD VALIDATION
     if (fullname.value === "") {
       errorMsg.textContent = "Please enter your full name.";
       return;
@@ -189,7 +184,7 @@
       return;
     }
 
-    if (status.value === "") {
+    if (civilStatus.value === "") {
       errorMsg.textContent = "Please select your civil status.";
       return;
     }
@@ -209,11 +204,11 @@
       return;
     }
 
-    // ALL OK → show output
+    // Display output
     oName.textContent = fullname.value;
     oDob.textContent = dob.value;
     oGender.textContent = gender.value;
-    oStatus.textContent = status.value;
+    oStatus.textContent = civilStatus.value;
     oEmail.textContent = email.value;
     oMobile.textContent = mobile.value;
     oAddress.textContent = address.value;
