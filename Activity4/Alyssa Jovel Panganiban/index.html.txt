@@ -101,7 +101,7 @@
 
         .header-success {
             background-color: #ff1c6f;
-            color: rgb(248, 160, 192);
+            color: rgb(255, 255, 255);
             padding: 15px 20px;
             font-size: 18px;
             font-weight: bold;
@@ -200,52 +200,88 @@
     const errorMessage = document.getElementById('error-message');
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault();
+    event.preventDefault();
 
-        const fullname = document.getElementById('fullname').value.trim();
-        const gender = document.getElementById('gender').value;
+    const fullname = document.getElementById('fullname').value.trim();
+    const gender = document.getElementById('gender').value;
+
+ 
+    if (fullname === '' && gender === '') {
+        errorMessage.textContent = "Please enter your Full Name and select Gender.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+    if (fullname === '') {
+        errorMessage.textContent = "Please enter your Full Name.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+    if (gender === '') {
+        errorMessage.textContent = "Please select Gender.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+
+
+    const dob = document.getElementById('dob').value;
+    const status = document.getElementById('status').value;
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const address = document.getElementById('address').value.trim();
+
+
+    if (email === '') {
+        errorMessage.textContent = "Please enter your Email Address.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorMessage.textContent = "Please enter a valid Email Address.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+
+    if (mobile === '') {
+        errorMessage.textContent = "Please enter your Mobile Number.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+    if (!/^\d{10,15}$/.test(mobile)) {  
+        errorMessage.textContent = "Please enter a valid Mobile Number (10-15 digits).";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+
+    if (address === '') {
+        errorMessage.textContent = "Please enter your Complete Address.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
+
+    errorMessage.style.display = 'none';
 
     
-        if (fullname === '' && gender === '') {
-            errorMessage.textContent = "Please enter Full Name and select Gender.";
-            errorMessage.style.display = 'block';
-            resultCard.style.display = 'none';
-            return;
-        }
-        if (fullname === '') {
-            errorMessage.textContent = "Please enter Full Name.";
-            errorMessage.style.display = 'block';
-            resultCard.style.display = 'none';
-            return;
-        }
-        if (gender === '') {
-            errorMessage.textContent = "Please select Gender.";
-            errorMessage.style.display = 'block';
-            resultCard.style.display = 'none';
-            return;
-        }
+    resultContent.innerHTML = `
+        <div class="result-item"><strong>Full Name:</strong> ${fullname}</div>
+        <div class="result-item"><strong>Date of Birth:</strong> ${dob}</div>
+        <div class="result-item"><strong>Gender:</strong> ${gender}</div>
+        <div class="result-item"><strong>Status:</strong> ${status}</div>
+        <div class="result-item"><strong>Email:</strong> ${email}</div>
+        <div class="result-item"><strong>Mobile:</strong> ${mobile}</div>
+        <div class="result-item"><strong>Address:</strong> ${address}</div>
+    `;
 
-        
-        errorMessage.style.display = 'none';
+    resultCard.style.display = 'block';
+});
 
-        const dob = document.getElementById('dob').value;
-        const status = document.getElementById('status').value;
-        const email = document.getElementById('email').value;
-        const mobile = document.getElementById('mobile').value;
-        const address = document.getElementById('address').value;
-
-        resultContent.innerHTML = `
-            <div class="result-item"><strong>Full Name:</strong> ${fullname}</div>
-            <div class="result-item"><strong>Date of Birth:</strong> ${dob}</div>
-            <div class="result-item"><strong>Gender:</strong> ${gender}</div>
-            <div class="result-item"><strong>Status:</strong> ${status}</div>
-            <div class="result-item"><strong>Email:</strong> ${email}</div>
-            <div class="result-item"><strong>Mobile:</strong> ${mobile}</div>
-            <div class="result-item"><strong>Address:</strong> ${address}</div>
-        `;
-
-        resultCard.style.display = 'block';
-    });
 </script>
 
 </body>
