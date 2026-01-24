@@ -204,8 +204,13 @@
 
     const fullname = document.getElementById('fullname').value.trim();
     const gender = document.getElementById('gender').value;
+    const dob = document.getElementById('dob').value;
+    const status = document.getElementById('status').value;
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const address = document.getElementById('address').value.trim();
 
- 
+    // Validation for full name and gender
     if (fullname === '' && gender === '') {
         errorMessage.textContent = "Please enter your Full Name and select Gender.";
         errorMessage.style.display = 'block';
@@ -225,14 +230,23 @@
         return;
     }
 
+    // Validation for Date of Birth
+    if (dob === '') {
+        errorMessage.textContent = "Please select your Date of Birth.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
 
-    const dob = document.getElementById('dob').value;
-    const status = document.getElementById('status').value;
-    const email = document.getElementById('email').value.trim();
-    const mobile = document.getElementById('mobile').value.trim();
-    const address = document.getElementById('address').value.trim();
+    // Validation for Civil Status
+    if (status === '') {
+        errorMessage.textContent = "Please select your Civil Status.";
+        errorMessage.style.display = 'block';
+        resultCard.style.display = 'none';
+        return;
+    }
 
-
+    // Validation for Contact Info
     if (email === '') {
         errorMessage.textContent = "Please enter your Email Address.";
         errorMessage.style.display = 'block';
@@ -252,7 +266,7 @@
         resultCard.style.display = 'none';
         return;
     }
-    if (!/^\d{10,15}$/.test(mobile)) {  
+    if (!/^\d{10,15}$/.test(mobile)) {
         errorMessage.textContent = "Please enter a valid Mobile Number (10-15 digits).";
         errorMessage.style.display = 'block';
         resultCard.style.display = 'none';
@@ -266,9 +280,9 @@
         return;
     }
 
+    // If all validations pass
     errorMessage.style.display = 'none';
 
-    
     resultContent.innerHTML = `
         <div class="result-item"><strong>Full Name:</strong> ${fullname}</div>
         <div class="result-item"><strong>Date of Birth:</strong> ${dob}</div>
