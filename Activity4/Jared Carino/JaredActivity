@@ -1,220 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Personal Data Sheet</title>
+  <title>Personal Data Sheet</title>
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-  }
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+    }
 
-  .container {
-    width: 80%;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-  }
+    .box {
+      width: 70%;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
 
-  .title {
-    background: #4169e1;
-    color: white;
-    padding: 12px;
-    border-radius: 4px;
-  }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
 
-  h3 {
-    color: #4169e1;
-    margin-top: 20px;
-  }
+    button {
+      background: green;
+      color: white;
+      border: none;
+      margin-top: 15px;
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
+    .output {
+      display: none;
+      background: #2e8b57;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+    }
 
-  .full {
-    grid-column: span 2;
-  }
+    .output p {
+      background: white;
+      color: black;
+      padding: 5px;
+    }
 
-  label {
-    font-weight: bold;
-  }
-
-  input, select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-  }
-
-  button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    background: #4169e1;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  .error {
-    margin-top: 10px;
-    color: red;
-    font-weight: bold;
-  }
-
-  .output {
-    margin-top: 30px;
-    padding: 20px;
-    background: #2e8b57;
-    color: white;
-    border-radius: 5px;
-    display: none;
-  }
-
-  .output-content {
-    background: white;
-    color: black;
-    padding: 15px;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
-</style>
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2 class="title">Personal Data Sheet</h2>
+<div class="box">
+  <h2>Personal Data Sheet</h2>
 
-  <form id="pdsForm" novalidate>
+  <form onsubmit="showData(event)">
+    Full Name:
+    <input type="text" id="name">
 
-    <h3>Personal Information</h3>
-    <div class="grid">
-      <div>
-        <label>Full Name</label>
-        <input type="text" id="fullname">
-      </div>
+    Date of Birth:
+    <input type="date" id="dob">
 
-      <div>
-        <label>Date of Birth</label>
-        <input type="date" id="dob">
-      </div>
+    Gender:
+    <select id="gender">
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
 
-      <div>
-        <label>Gender</label>
-        <select id="gender">
-          <option value="">Select Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Prefer not to say</option>
-        </select>
-      </div>
+    Status:
+    <select id="status">
+      <option value="">Select</option>
+      <option>Single</option>
+      <option>Married</option>
+    </select>
 
-      <div>
-        <label>Civil Status</label>
-        <select id="civilStatus">
-          <option value="">Select Status</option>
-          <option>Single</option>
-          <option>Married</option>
-          <option>Widowed</option>
-        </select>
-      </div>
-    </div>
+    Email:
+    <input type="email" id="email">
 
-    <h3>Contact Information</h3>
-    <div class="grid">
-      <div>
-        <label>Email</label>
-        <input type="email" id="email">
-      </div>
+    Mobile:
+    <input type="text" id="mobile">
 
-      <div>
-        <label>Mobile Number</label>
-        <input type="text" id="mobile">
-      </div>
+    Address:
+    <input type="text" id="address">
 
-      <div class="full">
-        <label>Complete Address</label>
-        <input type="text" id="address">
-      </div>
-    </div>
+    <button type="submit">Submit</button>
 
-    <button type="submit">Submit Personal Data Sheet</button>
-    <div id="errorMsg" class="error"></div>
+    <p class="error" id="error"></p>
   </form>
 
   <div class="output" id="output">
-    <h3>Submitted Information</h3>
-    <div class="output-content">
-      <p><b>Full Name:</b> <span id="oName"></span></p>
-      <p><b>Date of Birth:</b> <span id="oDob"></span></p>
-      <p><b>Gender:</b> <span id="oGender"></span></p>
-      <p><b>Status:</b> <span id="oStatus"></span></p>
-      <p><b>Email:</b> <span id="oEmail"></span></p>
-      <p><b>Mobile:</b> <span id="oMobile"></span></p>
-      <p><b>Address:</b> <span id="oAddress"></span></p>
-    </div>
+    <h3>Submitted Info</h3>
+    <p>Name: <span id="oName"></span></p>
+    <p>DOB: <span id="oDob"></span></p>
+    <p>Gender: <span id="oGender"></span></p>
+    <p>Status: <span id="oStatus"></span></p>
+    <p>Email: <span id="oEmail"></span></p>
+    <p>Mobile: <span id="oMobile"></span></p>
+    <p>Address: <span id="oAddress"></span></p>
   </div>
 </div>
 
 <script>
-  // Disable future dates
-  dob.max = new Date().toISOString().split("T")[0];
+function showData(e) {
+  e.preventDefault();
 
-  pdsForm.onsubmit = function(e) {
-    e.preventDefault();
-    errorMsg.textContent = "";
+  var name = document.getElementById("name").value;
+  var dob = document.getElementById("dob").value;
+  var gender = document.getElementById("gender").value;
+  var status = document.getElementById("status").value;
+  var email = document.getElementById("email").value;
+  var mobile = document.getElementById("mobile").value;
+  var address = document.getElementById("address").value;
 
-    if (fullname.value === "") {
-      errorMsg.textContent = "Please enter your full name.";
-      return;
-    }
+  if (name == "" || dob == "" || gender == "" || status == "" ||
+      email == "" || mobile == "" || address == "") {
+    document.getElementById("error").innerHTML = "Please fill out all fields.";
+    return;
+  }
 
-    if (dob.value === "") {
-      errorMsg.textContent = "Please select your date of birth.";
-      return;
-    }
+  document.getElementById("error").innerHTML = "";
 
-    if (gender.value === "") {
-      errorMsg.textContent = "Please select your gender.";
-      return;
-    }
+  document.getElementById("oName").innerHTML = name;
+  document.getElementById("oDob").innerHTML = dob;
+  document.getElementById("oGender").innerHTML = gender;
+  document.getElementById("oStatus").innerHTML = status;
+  document.getElementById("oEmail").innerHTML = email;
+  document.getElementById("oMobile").innerHTML = mobile;
+  document.getElementById("oAddress").innerHTML = address;
 
-    if (civilStatus.value === "") {
-      errorMsg.textContent = "Please select your civil status.";
-      return;
-    }
-
-    if (email.value === "") {
-      errorMsg.textContent = "Please enter your email.";
-      return;
-    }
-
-    if (mobile.value === "") {
-      errorMsg.textContent = "Please enter your mobile number.";
-      return;
-    }
-
-    if (address.value === "") {
-      errorMsg.textContent = "Please fill out your address.";
-      return;
-    }
-
-    // Display output
-    oName.textContent = fullname.value;
-    oDob.textContent = dob.value;
-    oGender.textContent = gender.value;
-    oStatus.textContent = civilStatus.value;
-    oEmail.textContent = email.value;
-    oMobile.textContent = mobile.value;
-    oAddress.textContent = address.value;
-
-    output.style.display = "block";
-  };
+  document.getElementById("output").style.display = "block";
+}
 </script>
 
 </body>
