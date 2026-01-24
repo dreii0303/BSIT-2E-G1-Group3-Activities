@@ -60,6 +60,13 @@
     cursor: pointer;
   }
 
+  /* ERROR MESSAGE */
+  .error {
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+  }
+
   /* GREEN OUTPUT BOX */
   .output {
     margin-top: 30px;
@@ -85,23 +92,23 @@
 <div class="container">
   <h2 class="title">Personal Data Sheet</h2>
 
-  <form id="pdsForm">
-    <h3>Personal Information</h3>
+  <form id="pdsForm" novalidate>
 
+    <h3>Personal Information</h3>
     <div class="grid">
       <div>
         <label>Full Name</label>
-        <input type="text" id="fullname" required>
+        <input type="text" id="fullname">
       </div>
 
       <div>
         <label>Date of Birth</label>
-        <input type="date" id="dob" required>
+        <input type="date" id="dob">
       </div>
 
       <div>
         <label>Gender</label>
-        <select id="gender" required>
+        <select id="gender">
           <option value="">Select Gender</option>
           <option>Male</option>
           <option>Female</option>
@@ -111,7 +118,7 @@
 
       <div>
         <label>Civil Status</label>
-        <select id="status" required>
+        <select id="status">
           <option value="">Select Status</option>
           <option>Single</option>
           <option>Married</option>
@@ -121,31 +128,31 @@
     </div>
 
     <h3>Contact Information</h3>
-
     <div class="grid">
       <div>
         <label>Email</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email">
       </div>
 
       <div>
         <label>Mobile Number</label>
-        <input type="text" id="mobile" required>
+        <input type="text" id="mobile">
       </div>
 
       <div class="full">
         <label>Complete Address</label>
-        <input type="text" id="address" required>
+        <input type="text" id="address">
       </div>
     </div>
 
     <button type="submit">Submit Personal Data Sheet</button>
+
+    <!-- CUSTOM ERROR MESSAGE -->
+    <div id="errorMsg" class="error"></div>
   </form>
 
-  <!-- GREEN BOX OUTPUT -->
   <div class="output" id="output">
     <h3>Submitted Information</h3>
-
     <div class="output-content">
       <p><b>Full Name:</b> <span id="oName"></span></p>
       <p><b>Date of Birth:</b> <span id="oDob"></span></p>
@@ -164,7 +171,45 @@
 
   pdsForm.onsubmit = function(e) {
     e.preventDefault();
+    errorMsg.textContent = "";
 
+    // PER-FIELD VALIDATION
+    if (fullname.value === "") {
+      errorMsg.textContent = "Please enter your full name.";
+      return;
+    }
+
+    if (dob.value === "") {
+      errorMsg.textContent = "Please select your date of birth.";
+      return;
+    }
+
+    if (gender.value === "") {
+      errorMsg.textContent = "Please select your gender.";
+      return;
+    }
+
+    if (status.value === "") {
+      errorMsg.textContent = "Please select your civil status.";
+      return;
+    }
+
+    if (email.value === "") {
+      errorMsg.textContent = "Please enter your email.";
+      return;
+    }
+
+    if (mobile.value === "") {
+      errorMsg.textContent = "Please enter your mobile number.";
+      return;
+    }
+
+    if (address.value === "") {
+      errorMsg.textContent = "Please fill out your address.";
+      return;
+    }
+
+    // ALL OK → show output
     oName.textContent = fullname.value;
     oDob.textContent = dob.value;
     oGender.textContent = gender.value;
