@@ -210,7 +210,7 @@
     const mobile = document.getElementById('mobile').value.trim();
     const address = document.getElementById('address').value.trim();
 
-    // Validation for full name and gender
+    
     if (fullname === '' && gender === '') {
         errorMessage.textContent = "Please enter your Full Name and select Gender.";
         errorMessage.style.display = 'block';
@@ -230,7 +230,7 @@
         return;
     }
 
-    // Validation for Date of Birth
+    
     if (dob === '') {
         errorMessage.textContent = "Please select your Date of Birth.";
         errorMessage.style.display = 'block';
@@ -238,7 +238,7 @@
         return;
     }
 
-    // Validation for Civil Status
+    
     if (status === '') {
         errorMessage.textContent = "Please select your Civil Status.";
         errorMessage.style.display = 'block';
@@ -246,7 +246,7 @@
         return;
     }
 
-    // Validation for Contact Info
+    
     if (email === '') {
         errorMessage.textContent = "Please enter your Email Address.";
         errorMessage.style.display = 'block';
@@ -280,7 +280,7 @@
         return;
     }
 
-    // If all validations pass
+   
     errorMessage.style.display = 'none';
 
     resultContent.innerHTML = `
@@ -300,3 +300,4 @@
 
 </body>
 </html>
+
