@@ -60,11 +60,22 @@
     cursor: pointer;
   }
 
+  /* GREEN OUTPUT BOX */
   .output {
     margin-top: 30px;
-    padding: 15px;
-    border-top: 5px solid #2e8b57;
+    padding: 20px;
+    background: #2e8b57;
+    color: white;
+    border-radius: 5px;
     display: none;
+  }
+
+  .output-content {
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -131,24 +142,27 @@
     <button type="submit">Submit Personal Data Sheet</button>
   </form>
 
+  <!-- GREEN BOX OUTPUT -->
   <div class="output" id="output">
     <h3>Submitted Information</h3>
-    <p><b>Full Name:</b> <span id="oName"></span></p>
-    <p><b>Date of Birth:</b> <span id="oDob"></span></p>
-    <p><b>Gender:</b> <span id="oGender"></span></p>
-    <p><b>Status:</b> <span id="oStatus"></span></p>
-    <p><b>Email:</b> <span id="oEmail"></span></p>
-    <p><b>Mobile:</b> <span id="oMobile"></span></p>
-    <p><b>Address:</b> <span id="oAddress"></span></p>
+
+    <div class="output-content">
+      <p><b>Full Name:</b> <span id="oName"></span></p>
+      <p><b>Date of Birth:</b> <span id="oDob"></span></p>
+      <p><b>Gender:</b> <span id="oGender"></span></p>
+      <p><b>Status:</b> <span id="oStatus"></span></p>
+      <p><b>Email:</b> <span id="oEmail"></span></p>
+      <p><b>Mobile:</b> <span id="oMobile"></span></p>
+      <p><b>Address:</b> <span id="oAddress"></span></p>
+    </div>
   </div>
 </div>
 
 <script>
-  // bawal future date
-  document.getElementById("dob").max =
-    new Date().toISOString().split("T")[0];
+  // disable future dates
+  dob.max = new Date().toISOString().split("T")[0];
 
-  document.getElementById("pdsForm").onsubmit = function(e) {
+  pdsForm.onsubmit = function(e) {
     e.preventDefault();
 
     oName.textContent = fullname.value;
@@ -159,7 +173,7 @@
     oMobile.textContent = mobile.value;
     oAddress.textContent = address.value;
 
-    document.getElementById("output").style.display = "block";
+    output.style.display = "block";
   };
 </script>
 
