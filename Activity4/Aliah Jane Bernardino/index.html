@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Data Sheet</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #FFFFFF;
+            padding: 20px;
+        }
+
+        .container {
+            width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #FFFFFF;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: #82CAFF;
+            color: #000;
+            padding: 10px;
+            font-weight: bold;
+            margin: -20px -20px 20px -20px;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .field {
+            width: 100%;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #82CAFF;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .result {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <div class="header">Personal Data Sheet</div>
+
+        <div class="row">
+            <div class="field">
+                <label>Full Name</label>
+                <input type="text" id="name">
+            </div>
+            <div class="field">
+                <label>Date of Birth</label>
+                <input type="date" id="dob">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="field">
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Status</label>
+                <select id="status">
+                    <option value="">Select</option>
+                    <option>Single</option>
+                    <option>Married</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="field">
+                <label>Email</label>
+                <input type="email" id="email">
+            </div>
+            <div class="field">
+                <label>Mobile</label>
+                <input type="text" id="mobile">
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Address</label>
+            <input type="text" id="address">
+        </div>
+
+        <br>
+        <button onclick="submitData()">Submit</button>
+        <div class="error" id="error"></div>
+    </div>
+
+    <div class="card result" id="result">
+        <div class="header">Submitted Information</div>
+        <p><b>Name:</b> <span id="rname"></span></p>
+        <p><b>DOB:</b> <span id="rdob"></span></p>
+        <p><b>Gender:</b> <span id="rgender"></span></p>
+        <p><b>Status:</b> <span id="rstatus"></span></p>
+        <p><b>Email:</b> <span id="remail"></span></p>
+        <p><b>Mobile:</b> <span id="rmobile"></span></p>
+        <p><b>Address:</b> <span id="raddress"></span></p>
+    </div>
+
+</div>
+
+<script>
+function submitData() {
+
+    var name = document.getElementById("name").value;
+    var dob = document.getElementById("dob").value;
+    var gender = document.getElementById("gender").value;
+    var status = document.getElementById("status").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
+    var address = document.getElementById("address").value;
+    var error = document.getElementById("error");
+
+    if (name == "" || dob == "" || gender == "" || status == "" || email == "" || mobile == "" || address == "") {
+        error.style.display = "block";
+        error.innerText = "Please fill out all fields.";
+        return;
+    }
+
+    error.style.display = "none";
+
+    document.getElementById("rname").innerText = name;
+    document.getElementById("rdob").innerText = dob;
+    document.getElementById("rgender").innerText = gender;
+    document.getElementById("rstatus").innerText = status;
+    document.getElementById("remail").innerText = email;
+    document.getElementById("rmobile").innerText = mobile;
+    document.getElementById("raddress").innerText = address;
+
+    document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
