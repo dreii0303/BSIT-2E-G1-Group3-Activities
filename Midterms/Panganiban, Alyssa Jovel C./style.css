@@ -1,0 +1,73 @@
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffdcdc;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ec5a72;
+    }
+
+    form {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input, select, button, textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        resize: vertical; 
+        height: 35px; 
+        min-height: 35px; 
+    }
+
+    button {
+        background-color: #db346e;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    button:hover {
+        background-color: #b9295e;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #b84f64;
+        color: white;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        background-color: #d4edda;
+    }
+
+    .delete-btn { background-color: #e74c3c; }
+    .delete-btn:hover { background-color: #c0392b; }
+    .edit-btn { background-color: hsl(355, 92%, 59%); }
+    .edit-btn:hover { background-color: #e55162; }
