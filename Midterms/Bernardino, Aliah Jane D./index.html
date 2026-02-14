@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Manager</title>
+
+    <!-- Link CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<table class="main-table">
+<tr>
+<td>
+
+<h1 style="text-align:center; color:#1565c0;">Student Task Manager</h1>
+<p style="text-align:center; color:#555;">Midterm Project - Task Organizer</p>
+
+<!-- Form Section -->
+<div class="card">
+
+<div class="error" id="errorMessage"></div>
+
+<form id="taskForm">
+<table class="form-table">
+<tr>
+    <td><input type="text" id="taskName" placeholder="Task Name"></td>
+    <td><input type="date" id="dueDate"></td>
+    <td>
+        <select id="priority">
+            <option value="">Select Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td colspan="3">
+        <textarea id="description" rows="3" placeholder="Task Description"></textarea>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" style="text-align:center;">
+        <button type="submit" class="add-btn">Add Task</button>
+    </td>
+</tr>
+</table>
+</form>
+
+</div>
+
+<br>
+
+<!-- Task List Section -->
+<div class="card">
+
+<table class="task-table">
+<thead>
+<tr>
+    <th>Task</th>
+    <th>Due Date</th>
+    <th>Priority</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody id="taskTableBody"></tbody>
+</table>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+<!-- Link JavaScript File -->
+<script src="script.js"></script>
+
+</body>
+</html>
