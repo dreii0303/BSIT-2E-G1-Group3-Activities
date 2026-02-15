@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Task Manager</title>
+    <style>
+        body{
+            font-family: Arial;
+            text-align:center;
+            background:#f2f2f2;
+        }
+
+        .container{
+            width:80%;
+            margin:auto;
+            background:white;
+            padding:20px;
+        }
+
+        input, select{
+            padding:5px;
+            margin:5px;
+        }
+
+        button{
+            padding:5px 10px;
+            background:#007bff;
+            color:white;
+            border:none;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        table{
+            width:100%;
+            margin-top:20px;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            border:1px solid #ccc;
+            padding:8px;
+        }
+
+        th{
+            background:#e6e6e6;
+        }
+
+        .completed{
+            text-decoration: line-through;
+            color:gray;
+        }
+
+        .low{color:green;}
+        .medium{color:orange;}
+        .high{color:red;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>Student Task Manager</h2>
+<p id="today"></p>
+
+<form id="taskForm">
+    <input type="text" id="title" placeholder="Task Title">
+    <input type="text" id="desc" placeholder="Task Description">
+    <select id="priority">
+        <option value="">Select Priority</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+    <input type="date" id="due">
+    <button type="submit">Save Task</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="taskBody">
+    </tbody>
+</table>
+
+</div>
+
+<script>
+// show today date
+document.getElementById("today").innerText = new Date().toDateString();
+
+const form = document.getElementById("taskForm");
+const taskBody = document.getElementById("taskBody");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let title = document.getElementById("title").value;
+    let desc = document.getElementById("desc").value;
+    let priority = document.getElementById("priority").value;
+    let due = document.getElementById("due").value;
+
+    // validation
+    if(title=="" || desc=="" || priority=="" || due==""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let today = new Date().toISOString().split("T")[0];
+    if(due < today){
+        alert("Due date cannot be in the past");
+        return;
+    }
+
+    let row = taskBody.insertRow();
+
+    row.insertCell(0).innerText = title;
+    row.insertCell(1).innerText = desc;
+
+    let priorityCell = row.insertCell(2);
+    priorityCell.innerText = priority;
+    priorityCell.classList.add(priority);
+
+    row.insertCell(3).innerText = due;
+    row.insertCell(4).innerText = "Pending";
+
+    let actions = row.insertCell(5);
+    actions.innerHTML = `
+        <button onclick="completeTask(this)">Complete</button>
+        <button onclick="editTask(this)">Edit</button>
+        <button onclick="deleteTask(this)">Delete</button>
+    `;
+
+    form.reset();
+});
+
+function deleteTask(btn){
+    btn.parentElement.parentElement.remove();
+}
+
+function completeTask(btn){
+    let row = btn.parentElement.parentElement;
+    row.classList.toggle("completed");
+
+    let statusCell = row.cells[4];
+    if(statusCell.innerText == "Pending"){
+        statusCell.innerText = "Completed";
+    }else{
+        statusCell.innerText = "Pending";
+    }
+}
+
+function editTask(btn){
+    let row = btn.parentElement.parentElement;
+    let newTitle = prompt("Edit Title:", row.cells[0].innerText);
+    if(newTitle!=null && newTitle!=""){
+        row.cells[0].innerText = newTitle;
+    }
+}
+</script>
+
+</body>
+</html>
