@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Student Task Manager</h1>
+</header>
+
+<main>
+    <section class="form-section">
+        <h2>Add / Edit Task</h2>
+        <form id="taskForm">
+            <label>Task Title</label>
+            <input type="text" id="title">
+
+            <label>Description</label>
+            <input type="text" id="description">
+
+
+            <label>Priority</label>
+            <select id="priority">
+                <option value="">Select Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label>Due Date</label>
+            <input type="date" id="dueDate">
+
+            <button type="submit" id="submitBtn">Add Task</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Task List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="taskTableBody">
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
